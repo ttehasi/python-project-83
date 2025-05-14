@@ -13,3 +13,5 @@ WORKDIR /app
 COPY . .
 
 RUN uv sync
+
+CMD ["make", "render-start"]

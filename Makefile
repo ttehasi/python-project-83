@@ -18,6 +18,4 @@ build:
 	./build.sh
 
 prod:
-	docker compose down
-	docker compose build
-	docker compose up
+	docker run -it -p 8000:8000 page_analyzer:latest
