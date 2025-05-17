@@ -1,8 +1,10 @@
+from datetime import datetime
+
+from sqlalchemy import desc
+
 from page_analyzer.db.database import session_factory
 from page_analyzer.db.models import Urls
-from typing import Optional
-from sqlalchemy import desc
-from datetime import datetime
+
 
 def add_url(name: str):
     with session_factory() as session:

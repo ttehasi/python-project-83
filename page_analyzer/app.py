@@ -1,24 +1,22 @@
+import os
+
 from flask import (
     Flask,
-    render_template,
-    request,
-    redirect,
     flash,
     get_flashed_messages,
-    url_for
+    redirect,
+    render_template,
+    request,
+    url_for,
 )
-from page_analyzer.url_validator import (
-    norm_url,
-    validate_url
-)
+
 from page_analyzer.db.utils import (
     add_url,
-    detele_url,
     get_all_urls,
     get_url_by_id,
-    get_url_by_name
+    get_url_by_name,
 )
-import os
+from page_analyzer.url_validator import norm_url, validate_url
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
