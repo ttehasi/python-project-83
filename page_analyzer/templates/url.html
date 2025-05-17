@@ -1,0 +1,34 @@
+{% include "layout.html" %}
+{% block content %}
+
+{% if messages %}
+{% for categorie, message in messages %}
+
+<div class="alert alert-{{categorie}}" role="alert">{{ message }}</div>
+
+{% endfor %}
+{% endif %}
+
+<main class="flex-grow-1">
+    <div class="container-lg mt-3">
+        <h1>Сайт: {{ url.name }}</h1>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover text-nowrap" data-test="url">
+                <tr>
+                    <td>ID</td>
+                    <td>{{ url.id }}</td>
+                </tr>
+                <tr>
+                    <td>Имя</td>
+                    <td>{{ url.name }}</td>
+                </tr>
+                <tr>
+                    <td>Дата создания</td>
+                    <td>{{ url.created_at }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

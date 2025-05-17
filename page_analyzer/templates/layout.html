@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
     <title>Анализатор страниц</title>
 </head>
 <body>
@@ -12,7 +12,7 @@
             <a class="navbar-brand" href="/">Анализатор страниц</a>
                 <div id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="navbar-item"><a class="nav-link" href="">Сайты</a></li>
+                        <li class="navbar-item"><a class="nav-link" href="{{ url_for('get_urls') }}">Сайты</a></li>
                     </ul>
                 </div>
         </nav>
