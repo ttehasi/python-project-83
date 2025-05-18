@@ -90,7 +90,7 @@ def get_urls():
 def check_url(id):
     url = get_url_by_id(id)
     try:
-        reqst = requests.get(url.name, timeout=0.3)
+        reqst = requests.get(url.name)
         reqst.raise_for_status()
     except requests.RequestException:
         flash('Ошибка при проверке', 'danger')
