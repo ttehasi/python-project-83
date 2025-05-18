@@ -15,12 +15,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for url in urls %}
+                    {% for all in all_about_url %}
                     <tr>
-                        <td>{{ url.id }}</td>
-                        <td><a href="{{ url_for('get_url', id=url.id) }}">{{ url.name }}</a></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{ all[0].id }}</td>
+                        <td><a href="{{ url_for('get_url', id=all[0].id) }}">{{ all[0].name }}</a></td>
+                        <td>{{ all[1].created_at }}</td>
+                        <td>{{ all[1].status_code }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
