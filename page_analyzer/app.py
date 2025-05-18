@@ -92,3 +92,10 @@ def check_url(id):
     add_url_check(url.id)
     flash('Страница успешно проверена', 'success')
     return redirect(url_for('get_url', id=url.id))
+
+
+@app.errorhandler(500)
+def error_500():
+    return render_template(
+        '500.html',
+    )
