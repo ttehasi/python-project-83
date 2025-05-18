@@ -1,5 +1,6 @@
 import os
 
+import requests
 from flask import (
     Flask,
     flash,
@@ -9,7 +10,7 @@ from flask import (
     request,
     url_for,
 )
-from werkzeug.exceptions import HTTPException
+from werkzeug.exceptions import InternalServerError
 
 from page_analyzer.db.utils import (
     add_url,
@@ -79,8 +80,6 @@ def get_urls():
     all_about_url = []
     for i in urls:
         all_about_url.append((i, get_last_url_check_by_id(i.id)))
-        # all_about_url['url'] = i
-        # all_about_url['last_check'] = get_last_url_check_by_id(i.id)
     return render_template(
         'urls.html',
         all_about_url=all_about_url
@@ -90,12 +89,18 @@ def get_urls():
 @app.route('/urls/<int:id>/check', methods=['POST'])
 def check_url(id):
     url = get_url_by_id(id)
-    add_url_check(url.id)
+    try:
+        reqst = requests.get(url.name, timeout=0.3)
+        reqst.raise_for_status()
+    except requests.RequestException:
+        flash('Ошибка при проверке', 'danger')
+        return redirect(url_for('get_url', id=url.id))
+    add_url_check(url_id=url.id, status_code=reqst.status_code)
     flash('Страница успешно проверена', 'success')
     return redirect(url_for('get_url', id=url.id))
 
 
-@app.errorhandler(HTTPException)
+@app.errorhandler(InternalServerError)
 def error_500(error):
     return render_template(
         '500.html',

@@ -63,7 +63,8 @@ def add_url_check(url_id: int,
 def get_last_url_check_by_id(id: int):
     with session_factory() as session:
         url_check = session.query(Urls_Checks). \
-            filter(Urls_Checks.id == id).order_by(desc(Urls_Checks.id)).first()
+            filter(Urls_Checks.url_id == id). \
+                order_by(desc(Urls_Checks.id)).first()
     return url_check
 
 
