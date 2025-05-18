@@ -9,6 +9,7 @@ from flask import (
     request,
     url_for,
 )
+from werkzeug.exceptions import HTTPException
 
 from page_analyzer.db.utils import (
     add_url,
@@ -94,8 +95,8 @@ def check_url(id):
     return redirect(url_for('get_url', id=url.id))
 
 
-@app.errorhandler(500)
-def error_500():
+@app.errorhandler(HTTPException)
+def error_500(error):
     return render_template(
         '500.html',
     )
