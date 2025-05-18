@@ -86,7 +86,7 @@ def get_urls():
     )
     
     
-@app.post('/urls/<int:id>/check')
+@app.route('/urls/<int:id>/check', methods=['POST'])
 def check_url(id):
     url = get_url_by_id(id)
     add_url_check(url.id)
