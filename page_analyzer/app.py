@@ -21,6 +21,7 @@ from page_analyzer.db.utils import (
     get_url_by_name,
     get_url_check_by_url_id,
 )
+from page_analyzer.parser import parser_body
 from page_analyzer.url_validator import norm_url, validate_url
 
 app = Flask(__name__)
@@ -95,7 +96,15 @@ def check_url(id):
     except requests.RequestException:
         flash('Ошибка при проверке', 'danger')
         return redirect(url_for('get_url', id=url.id))
-    add_url_check(url_id=url.id, status_code=reqst.status_code)
+    pars_data = parser_body(reqst.content)
+    h1 = pars_data['h1'] if pars_data['h1'] is not None else ''
+    title = pars_data['title'] if pars_data['title'] is not None else ''
+    add_url_check(url_id=url.id, 
+                  status_code=reqst.status_code, 
+                  h1=h1,
+                  title=title,
+                  description=pars_data['description']
+                  )
     flash('Страница успешно проверена', 'success')
     return redirect(url_for('get_url', id=url.id))
 
