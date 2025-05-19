@@ -12,7 +12,7 @@ def norm_url(url) -> str:
 def validate_url(url):
     errors = {}
     if not validators.url(url):
-        errors['url'] = 'Некорректный формат URL'
+        errors['url'] = 'Некорректный URL'
         # return errors
     if len(url) > 255:
         errors['url'] = 'Слишком длинный URL (должен быть короче 255 символов)'

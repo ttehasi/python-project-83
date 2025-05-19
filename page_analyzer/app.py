@@ -94,7 +94,7 @@ def check_url(id):
         reqst = requests.get(url.name)
         reqst.raise_for_status()
     except requests.RequestException:
-        flash('Ошибка при проверке', 'danger')
+        flash('Произошла ошибка при проверке', 'danger')
         return redirect(url_for('get_url', id=url.id))
     pars_data = parser_body(reqst.content)
     h1 = pars_data['h1'] if pars_data['h1'] is not None else ''
