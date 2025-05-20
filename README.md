@@ -4,6 +4,7 @@
 [![Actions Status](https://github.com/ttehasi/python-project-83/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/ttehasi/python-project-83/actions)
 [![my check](https://github.com/ttehasi/python-project-83/actions/workflows/check.yaml/badge.svg)](https://github.com/ttehasi/python-project-83/actions/workflows/check.yaml)
 [![Maintainability](https://qlty.sh/badges/37fab6da-add5-4d8c-8ef3-8813871b08ce/maintainability.svg)](https://qlty.sh/gh/ttehasi/projects/python-project-83)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=ttehasi_python-project-83&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=ttehasi_python-project-83)
 ****
 
 [Проект на render.com](https://page-analuzerfromtte.onrender.com)
